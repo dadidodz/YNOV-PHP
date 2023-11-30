@@ -15,13 +15,13 @@ function upperCaseFirst($string): string
     return ucwords($string) ;
 }
 
-function lowerCaseFirst($string): string
-{
-    $len = strlen($string);
-    for ($i = 0; $i < $len; $i++) {
-        $string[$i] = lcfirst($string[$i]);
-    }
-    return $string;
+function lowerCaseFirst($str) {
+    $words = explode(' ', $str);
+    $titleCaseWords = array_map(function($word) {
+        return ucfirst(strtolower($word));
+    }, $words);
+
+    return implode(' ', $titleCaseWords);
 }
 
 function removeBlankSpace($string): string
