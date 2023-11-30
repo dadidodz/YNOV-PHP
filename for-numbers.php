@@ -1,10 +1,12 @@
 <?php
-for ($p = 0; $p < 100; ++$p) {
-    if ($p % 2 and $p!=99) {
-        echo $p . ', '; // 1 3 5 7 9
-    }elseif($p % 2 and $p==99){
-        echo $p;
+$number=2;
+while($number <100)
+{
+    $div_count=0;
+    for ($i=1;$i<=$number;$i++) {
+        if(($number%$i)==0) {
+            $div_count++;
+        }
     }
-}
-
+    if($div_count<3 and $number!=97) { echo $number.", ";}elseif($div_count<3 and $number==97){ echo $number."";}$number=$number+1; }
 ?>
