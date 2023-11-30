@@ -18,11 +18,13 @@ function upperCaseFirst($string): string
 function lowerCaseFirst($str) {
     $words = explode(' ', $str);
     $titleCaseWords = array_map(function($word) {
-        return ucfirst(strtolower($word));
+        return lcfirst($word);
     }, $words);
 
     return implode(' ', $titleCaseWords);
 }
+
+
 
 function removeBlankSpace($string): string
 {
