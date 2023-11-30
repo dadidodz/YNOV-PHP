@@ -1,5 +1,4 @@
 <?php
-
 function capsMe($string): string
 {
     return strtoupper($string) ;
@@ -31,7 +30,7 @@ function lowerCaseFirst($string): string
 
 function removeBlankSpace($string): string
 {
-    return trim($string) ;
+    return trim($string);
 }
 
 ?>
