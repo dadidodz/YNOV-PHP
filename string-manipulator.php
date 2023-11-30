@@ -1,4 +1,5 @@
 <?php
+
 function capsMe($string): string
 {
     return strtoupper($string) ;
@@ -16,7 +17,11 @@ function upperCaseFirst($string): string
 
 function lowerCaseFirst($string): string
 {
-    return lcfirst($string);
+    $len = strlen($string);
+    for ($i = 0; $i < $len; $i++) {
+        $string[$i] = lcfirst($string[$i]);
+    }
+    return $string;
 }
 
 function removeBlankSpace($string): string
