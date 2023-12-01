@@ -16,21 +16,17 @@ function breakLines($string, $int): string
                 $result.=$value;
                 $nbr_char+=$len_word;
                 $retour_ligne = false;
-                //echo($nbr_char.' ');
             }elseif ($nbr_char < $int){
                 $result.= ' '.$value;
                 $nbr_char+=$len_word+1;
-                //echo($nbr_char.' ');
             }else{
                 $result.= "\n".$value.' ';
                 $nbr_char=$len_word+1;
                 $retour_ligne = true;
-                //echo($nbr_char.' ');
             }
         }
     }
     return $result;
 }
 
-echo breakLines('Line with words should break at this spot', 15)
 ?>
