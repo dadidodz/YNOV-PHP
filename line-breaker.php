@@ -9,14 +9,15 @@ function breakLines($string, $int): string
     $array_string = preg_split($pattern, $string);
     foreach ($array_string as $value){
         $len_word=strlen($value);
-        if ($len_word > 15){
+        if ($len_word > $int){
             throw new Exception('A word is longer than '.$int.' characters');
         }else{
             $nbr_char+=$len_word;
-            if($counter == count($array_string) - 1 and $nbr_char < $int){
+            if($counter == count($array_string) - 1 and $nbr_char <= $int or $nbr_char = $int ){
                 $result.=$value;
-            }elseif ($nbr_char < $int){
+            }elseif ($nbr_char <= $int){
                 $result.=$value.' ';
+                $nbr_char+=1;
             }else{
                 $result.= "\n".$value.' ';
                 $nbr_char=0;
