@@ -18,7 +18,7 @@ function breakLines($string, $int): string
             }elseif ($nbr_char < $int){
                 $result.=$value.' ';
             }else{
-                $result.= "\n".$value;
+                $result.= "\n".$value.' ';
                 $nbr_char=0;
             }
         }
