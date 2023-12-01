@@ -18,7 +18,7 @@ function breakLines($string, $int): string
                 $result.= ' '.$value;
                 $nbr_char+=$len_word+1;
             }else{
-                $result.= "\n".$value;
+                $result.= "\n".$value.' ';
                 $nbr_char=0;
             }
         }
@@ -26,8 +26,5 @@ function breakLines($string, $int): string
     return $result;
 }
 
-echo breakLines('Line with words aaaaa', 15)
-
-
-
+echo breakLines('Line with words should break', 15)
 ?>
