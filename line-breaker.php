@@ -12,9 +12,9 @@ function breakLines($string, $int): string
         if ($len_word > $int){
             throw new Exception('A word is longer than '.$int.' characters');
         }else{
+            $nbr_char += $len_word;
             if($retour_ligne == true and $nbr_char < $int){
                 $result.=$value;
-                $nbr_char+=$len_word;
                 $retour_ligne = false;
             }elseif ($nbr_char < $int){
                 $result.= ' '.$value;
@@ -28,5 +28,5 @@ function breakLines($string, $int): string
     }
     return $result;
 }
-
+echo breakLines('Title is long\nLine with words break', 12)
 ?>
