@@ -24,8 +24,6 @@ function lowerCaseFirst($str) {
     return implode(' ', $titleCaseWords);
 }
 
-
-
 function removeBlankSpace($string): string
 {
     return trim($string);
