@@ -13,13 +13,13 @@ function breakLines($string, $int): string
             throw new Exception('A word is longer than '.$int.' characters');
         }else{
             $nbr_char+=$len_word;
-            if($counter == count($array_string) - 1 and $nbr_char <= $int or $nbr_char = $int ){
+            if($counter == 0 and $nbr_char < $int){
                 $result.=$value;
-            }elseif ($nbr_char <= $int){
-                $result.=$value.' ';
+            }elseif ($nbr_char < $int){
+                $result.= ' '.$value;
                 $nbr_char+=1;
             }else{
-                $result.= "\n".$value.' ';
+                $result.= "\n".$value;
                 $nbr_char=0;
             }
         }
@@ -27,6 +27,8 @@ function breakLines($string, $int): string
     }
     return $result;
 }
+
+echo breakLines('Line with words aaaaa', 15)
 
 
 
