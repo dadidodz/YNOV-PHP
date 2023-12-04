@@ -10,5 +10,4 @@ function calc(string $expression): int
     $result = eval("return $expression;");
     return $result;
 }
-
 ?>
