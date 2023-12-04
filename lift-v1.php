@@ -1,6 +1,7 @@
 <?php
 
-function getFloor(int $currentFloor, int|null $requestedFloor, array $listButtonsCalled){
+function getFloor(int $currentFloor, int|null $requestedFloor, array $listButtonsCalled): ?int
+{
 
     if ($requestedFloor != null){
         return $requestedFloor;
@@ -15,7 +16,8 @@ function getFloor(int $currentFloor, int|null $requestedFloor, array $listButton
 
 }
 
-function getNearestNumberInArray($numbers, $reference) {
+function getNearestNumberInArray($numbers, $reference)
+{
     if (empty($reference)) {
         return null;
     }
@@ -35,7 +37,8 @@ function getNearestNumberInArray($numbers, $reference) {
     return $nearest;
 }
 
-function getDirection(int $currentFloor, int|null $requestedFloor, array $listButtonsCalled): int{
+function getDirection(int $currentFloor, int|null $requestedFloor, array $listButtonsCalled): int
+{
 
     if ($currentFloor === $requestedFloor) {
         return 0;
