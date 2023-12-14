@@ -12,13 +12,13 @@ $today = function() use ($dayNumber, $month, $year){
 
 $isLeapYear = function() use ($year){
     if ($year % 400 == 0)
-        echo ''.True;
+        return True;
     else if ($year % 100 == 0)
-        echo ''.False;
+        return False;
     else if ($year % 4 == 0)
-        echo ''.True;
+        return True;
     else
-        echo ''.False;
+        return False;
 };
 
 $today();
