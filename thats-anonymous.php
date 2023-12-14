@@ -4,10 +4,10 @@
 $yearl = date("Y");
 
 $today = function() {
-    $dayNumber = date("jS");
+    $dayNumber = date("j");
     $month = date("F");
     $year = date("Y");
-    $result = 'It is ' . $month . ' ' . $dayNumber . 'th, ' . $year;
+    $result = 'It is ' . $month . ' ' . $dayNumber . ', ' . $year;
     return $result;
 };
 
