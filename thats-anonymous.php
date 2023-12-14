@@ -1,7 +1,6 @@
 <?php
 
 
-$yearl = date("Y");
 
 $today = function() {
     $dayNumber = date("j");
@@ -11,7 +10,7 @@ $today = function() {
     return $result;
 };
 
-$isLeapYear = function() use ($yearl){
+$isLeapYear = function($yearl){
     if ($yearl % 400 == 0)
         return True;
     else if ($yearl % 100 == 0)
