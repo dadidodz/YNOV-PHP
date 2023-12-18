@@ -11,12 +11,11 @@ function checkCircuits(int $number): array{
         13 => 'Motor'
     ];
 
-    foreach($tab as $digit) {
-        if (($number % intval($digit)) == 0){
-            array_push($finalArr, $tab[$digit]);
+    foreach ($tab as $key => $value) {
+        if (($number % intval($key)) == 0){
+            array_push($finalArr, $value);
         }
     }
-
     return $finalArr;
 }
 
