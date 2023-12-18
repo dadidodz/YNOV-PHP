@@ -11,7 +11,7 @@ function manageMovements(string $commands): array{
     $last = "";
 
 
-    for ($i = 0; $i <= strlen($commands); $i++){
+    for ($i = 0; $i < strlen($commands); $i++){
         if ($commands[$i] == $last) {
             $word = $tab[$commands[$i]] . " AGAIN";
             array_push($finalArr, $word);
