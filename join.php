@@ -15,4 +15,5 @@ function joinWords(array $tab, string $separator = ' '): string {
     return $result;
 
 }
+
 ?>
