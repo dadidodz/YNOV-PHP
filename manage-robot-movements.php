@@ -7,10 +7,18 @@ function manageMovements(string $commands): array{
         "F" => "FORWARD",
         "B" => "BACKWARD"
     ];
+    $word = "";
+    $last = "";
 
 
     for ($i = 1; $i <= strlen($commands); $i++){
-        array_push($finalArr, $tab[$commands[$i]]);
+        if ($commands[$i] == $last) {
+            $word = $tab[$commands[$i]] . " AGAIN";
+            array_push($finalArr, $word);
+        }else{
+            array_push($finalArr, $tab[$commands[$i]]);
+        }
+        $last = $commands[$i];
     }
 
     return $finalArr;
