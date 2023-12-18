@@ -4,8 +4,8 @@ function manageMovements(string $commands): array{
     $tab = [
         'R' => 'RIGHT',
         'L' => 'LEFT',
-        'F' => 'FORWARD',
-        'B' => 'BACKWARD'
+        'F' => 'FRONT',
+        'B' => 'BACKWARDS'
     ];
     $word = '';
     $last = '';
