@@ -1,7 +1,5 @@
 <?php
 
-
-
 $today = function() {
     $dayNumber = date("j");
     $month = date("F");
