@@ -6,6 +6,7 @@ function joinWords(array $tab, string $separator = ' '){
     foreach($tab as $word){
         $result = $result . $separator . $word;
     }
+    return $result;
 
 }
 
