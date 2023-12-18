@@ -9,7 +9,7 @@ function manageMovements(string $commands): array{
     ];
 
 
-    for ($i = 0; $i < strlen($commands); $i++){
+    for ($i = 1; $i <= strlen($commands); $i++){
         array_push($finalArr, $tab[$commands[$i]]);
     }
 
