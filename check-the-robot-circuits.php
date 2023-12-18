@@ -12,7 +12,7 @@ function checkCircuits(int $number): array{
     ];
 
     foreach($tab as $digit) {
-        if (($number % $digit) == 0){
+        if (($number % intval($digit)) == 0){
             array_push($finalArr, $tab[$digit]);
         }
     }
