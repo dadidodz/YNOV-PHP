@@ -1,6 +1,6 @@
 <?php
 
-function myArrayReduce(?callable $callable, array $array, array ...$arrays): array{
+function myArrayMap(?callable $callable, array $array, array ...$arrays): array{
     for ($i = 0; $i < count($array); $i++) {
         $array[$i] = $callable($array[$i]); //sum
     }
