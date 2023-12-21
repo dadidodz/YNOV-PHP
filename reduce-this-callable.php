@@ -25,5 +25,6 @@ function myArrayReduce(array $array, callable $callable, mixed $initial = null):
 $a = array(1, 2, 3, 4, 5);
 var_dump(array_reduce($a, "sum"));
 var_dump(myArrayReduce($a, "sum"));
+var_dump(myArrayReduce(["Hello", "i'm", "Flo"], static fn ($a, $b) => $a . "-" . $b));
 
 ?>
