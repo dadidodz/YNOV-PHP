@@ -11,7 +11,7 @@ function myArrayMap1(?callable $callable, array $array, array ...$arrays): array
 }
 
 
-function myArrayMap(callable $callback, array ...$arrays) {
+function myArrayMap(?callable $callback, array $array, array ...$arrays) {
     // Check if all arrays have the same length
     $lengths = array_map('count', $arrays);
     if (count(array_unique($lengths)) !== 1) {
