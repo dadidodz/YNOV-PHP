@@ -14,7 +14,7 @@ function myArrayReduce(array $array, callable $callable, mixed $initial = null):
     if ($initial != null){
         $result = $initial;
     }else{
-        $result = 0;
+        $result = null;
     }
     for ($i = 0; $i < count($array); $i++) {
         $result = $callable($result, $array[$i]); //sum
