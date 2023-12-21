@@ -1,6 +1,6 @@
 <?php
 
-function myArrayMap1(?callable $callable, array $array, array ...$arrays): array{
+function myArrayMap(?callable $callable, array $array, array ...$arrays): array{
     if ($callable == null){
         return $array;
     }
