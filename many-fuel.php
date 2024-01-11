@@ -5,9 +5,8 @@ class Car{
     private float $tank;
 
     //  ↙ Visibility into functions
-    public function __construct(float $tank)
+    public function __construct()
     {
-        $this->tank = $tank;
     }
 
     // Getters
