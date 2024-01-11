@@ -7,11 +7,8 @@ class Mojito
     public array $ingredients = ["rum", "lime", "sparkling water", "mint", "sugar"];
     public int $price = 8;
 
-    public function __construct(float $alcoholRate, array $ingredients, int $price)
+    public function __construct()
       {
-         $this->alcoholRate = $alcoholRate;
-         $this->ingredients = $ingredients;
-         $this->price = $price;
       }
 
 }
