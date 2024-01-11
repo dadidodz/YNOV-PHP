@@ -21,10 +21,10 @@
             return $this;
         }
 
-        public function ride(float $distance): self
-        {
-            (float)$res = $distance / 20;
-            $this->tank -= $res;
+        public function ride(float $distance): self {
+            (float)$consommation = $distance / 20;
+            $this->setTank($this->getTank()-$consommation);
             return $this;
         }
     }
+?>
