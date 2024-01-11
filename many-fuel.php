@@ -28,6 +28,7 @@ class Car{
         (float)$consommation = $distance / 20;
         $this->setTank($this->getTank()-$consommation);
     }
+    
 
  }
 
