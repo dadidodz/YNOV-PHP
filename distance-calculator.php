@@ -1,7 +1,7 @@
 <?php
     class Geolocation
     {
-        public static function fromGeoPoints($lat1, $lng1, $lat2, $lng2, $miles = false) {
+        public static function fromGeoPoints($lat1, $lng1, $lat2, $lng2) {
             $pi80 = M_PI / 180;
             $lat1 *= $pi80;
             $lng1 *= $pi80;
@@ -15,7 +15,7 @@
             $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
             $km = $r * $c;
         
-            return round(($miles ? ($km * 0.621371192) : $km), 1);
+            return round(($km * 0.621371192), 1);
         }
     
 
