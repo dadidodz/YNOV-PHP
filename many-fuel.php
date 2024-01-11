@@ -21,9 +21,16 @@
             return $this;
         }
 
-        public function ride(float $distance){
-            (float)$consommation = $distance / 20;
-            $this->setTank($this->getTank()-$consommation);
+        public function add_fuel(float $to_add): self
+        {
+            $this->tank += $to_add;
+            return $this;
+        }
+
+        public function ride(float $distance): self
+        {
+            (float)$res = $distance / 20;
+            $this->tank -= $res;
+            return $this;
         }
     }
-?>
