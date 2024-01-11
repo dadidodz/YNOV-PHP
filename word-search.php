@@ -83,7 +83,7 @@ function searchWord(array $multiDimArray, string $word){
     $temp = 0;
     for ($i = 0; $i < count($multiDimArray); $i++) {
         for ($j = 0; $j < count($multiDimArray[$i]); $j++) {
-            if ($arrayWord[$temp] == $multiDimArray[$i][$j] ){
+            if ($arrayWord[0] == $multiDimArray[$i][$j] ){
                 $temp++;
                 $positioni = $i;
                 $positionj = $j;        
@@ -104,4 +104,6 @@ function searchWord(array $multiDimArray, string $word){
 
     return $bool;
 }
+
+echo searchWord($board, 'abcd'); // true
 ?>
