@@ -7,7 +7,7 @@ $board = [                  //board[i][j]
 ];
 
 function nextLetter(&$positioni, &$positionj, &$bool, array $array, $letter){
-    // print('nextletter');
+
     if ($positioni == 0){
         if ($positionj == 0){
             if ($letter == $array[$positioni][$positionj+1]){
@@ -53,7 +53,34 @@ function nextLetter(&$positioni, &$positionj, &$bool, array $array, $letter){
             }
         }
     }else{
-        if ($letter == $array[$positioni][$positionj-1]){
+        if ($positionj == 0){
+            if ($letter == $array[$positioni-1][$positionj]){
+                $positioni = $positioni - 1;
+                $positionj = $positionj;
+                $bool = true;
+            }elseif($letter == $array[$positioni+1][$positionj]){
+                $positioni = $positioni + 1;
+                $positionj = $positionj;
+                $bool = true;
+            }elseif($letter == $array[$positioni][$positionj+1]){
+                $positioni = $positioni;
+                $positionj = $positionj + 1;
+                $bool = true;
+        }elseif ($positionj == count($array[$positioni]) - 1){
+            if ($letter == $array[$positioni-1][$positionj]){
+                $positioni = $positioni - 1;
+                $positionj = $positionj;
+                $bool = true;
+            }elseif($letter == $array[$positioni+1][$positionj]){
+                $positioni = $positioni + 1;
+                $positionj = $positionj;
+                $bool = true;
+            }elseif($letter == $array[$positioni][$positionj-1]){
+                $positioni = $positioni;
+                $positionj = $positionj - 1;
+                $bool = true;
+            }}
+        }elseif ($letter == $array[$positioni][$positionj-1]){
             $positioni = $positioni;
             $positionj = $positionj - 1;
             $bool = true;
@@ -76,30 +103,23 @@ function nextLetter(&$positioni, &$positionj, &$bool, array $array, $letter){
 }
 
 function searchWord(array $multiDimArray, string $word){
-    // $letterFound = false;
     $bool = true;
     $arrayWord = str_split($word);
     $positioni = 0;
     $positionj = 0;
     $temp = 0;
-    // print('temp ' . $temp);
     for ($i = 0; $i < count($multiDimArray); $i++) {
         for ($j = 0; $j < count($multiDimArray[$i]); $j++) {
             if ($arrayWord[0] == $multiDimArray[$i][$j]  ){
-                // print('ici');
-                print('temp ' . $temp);
                 $temp++;
                 $positioni = $i;
-                $positionj = $j;
-                // $letterFound = true;       
+                $positionj = $j;      
             }
         }
     }
 
     while ($temp<count($arrayWord)){
-        // print('ici3');
         if ($bool == true){
-            print('temp ' . $temp);
             nextLetter($positioni, $positionj, $bool ,$multiDimArray, $arrayWord[$temp]);
             $temp++;
         }else{
@@ -111,5 +131,14 @@ function searchWord(array $multiDimArray, string $word){
     
 }
 
-// print_r(searchWord($board, 'abcd'));  // true
+// Word can be constructed as letters from adjacent cells sequentially
+// where the 'adjacent' cells are the neighboring ones horizontally or vertically
+searchWord($board, 'abcd'); // true
+searchWord($board, 'abcl'); // true
+searchWord($board, 'admfbl'); // true
+
+// It is not allowed to use the same letter twice
+searchWord($board, 'abcc'); // false
+searchWord($board, 'abcdc'); // false
+searchWord($board, 'dklml'); // false
 ?>
