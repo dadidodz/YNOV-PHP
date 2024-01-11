@@ -1,144 +1,59 @@
 <?php
+// Fonction pour rechercher un mot dans un tableau 2D
+function searchWord(array $multiDimArray, string $searchString): bool {
+    // Obtenir le nombre de lignes et de colonnes dans le tableau
+    $rows = count($multiDimArray);
+    $cols = count($multiDimArray[0]);
 
-$board = [                  //board[i][j]
-    ['a', 'b', 'c', 'd'],   //board[0][3]
-    ['d', 'k', 'l', 'm'],   //board[1][0]
-    ['m', 'f', 'b', 's']    //board[2][0]
-];
-
-function nextLetter(&$positioni, &$positionj, &$bool, array $array, $letter){
-
-    if ($positioni == 0){
-        if ($positionj == 0){
-            if ($letter == $array[$positioni][$positionj+1]){
-                $positioni = $positioni;
-                $positionj = $positionj + 1;
-                $bool = true;
-            }elseif($letter == $array[$positioni+1][$positionj]){
-                $positioni = $positioni + 1;
-                $positionj = $positionj;
-                $bool = true;
+    // Itérer à travers chaque cellule du tableau
+    for ($i = 0; $i < $rows; $i++) {
+        for ($j = 0; $j < $cols; $j++) {
+            // Si la cellule actuelle correspond au premier caractère de la chaîne de recherche,
+            // effectuer une recherche en profondeur pour trouver les caractères restants
+            if ($multiDimArray[$i][$j] === $searchString[0] && rechercheProfondeur($multiDimArray, $i, $j, $searchString, 0)) {
+                return true;
             }
-        }elseif($positionj == count($array[$positioni])-1){
-            if ($letter == $array[$positioni][$positionj-1]){
-                $positioni = $positioni;
-                $positionj = $positionj - 1;
-                $bool = true;
-            }elseif($letter == $array[$positioni+1][$positionj]){
-                $positioni = $positioni + 1;
-                $positionj = $positionj;
-                $bool = true;
-            }
-        }
-    }elseif ($positioni == count($array)-1){
-        if ($positionj == 0){
-            if ($letter == $array[$positioni-1][$positionj]){
-                $positioni = $positioni - 1;
-                $positionj = $positionj;
-                $bool = true;
-            }elseif($letter == $array[$positioni][$positionj+1]){
-                $positioni = $positioni;
-                $positionj = $positionj + 1;
-                $bool = true;
-            }
-        }elseif($positionj == count($array[$positioni])-1){
-            if ($letter == $array[$positioni][$positionj-1]){
-                $positioni = $positioni;
-                $positionj = $positionj - 1;
-                $bool = true;
-            }elseif($letter == $array[$positioni-1][$positionj]){
-                $positioni = $positioni - 1;
-                $positionj = $positionj;
-                $bool = true;
-            }
-        }
-    }else{
-        if ($positionj == 0){
-            if ($letter == $array[$positioni-1][$positionj]){
-                $positioni = $positioni - 1;
-                $positionj = $positionj;
-                $bool = true;
-            }elseif($letter == $array[$positioni+1][$positionj]){
-                $positioni = $positioni + 1;
-                $positionj = $positionj;
-                $bool = true;
-            }elseif($letter == $array[$positioni][$positionj+1]){
-                $positioni = $positioni;
-                $positionj = $positionj + 1;
-                $bool = true;
-        }elseif ($positionj == count($array[$positioni]) - 1){
-            if ($letter == $array[$positioni-1][$positionj]){
-                $positioni = $positioni - 1;
-                $positionj = $positionj;
-                $bool = true;
-            }elseif($letter == $array[$positioni+1][$positionj]){
-                $positioni = $positioni + 1;
-                $positionj = $positionj;
-                $bool = true;
-            }elseif($letter == $array[$positioni][$positionj-1]){
-                $positioni = $positioni;
-                $positionj = $positionj - 1;
-                $bool = true;
-            }}
-        }elseif ($letter == $array[$positioni][$positionj-1]){
-            $positioni = $positioni;
-            $positionj = $positionj - 1;
-            $bool = true;
-        }elseif($letter == $array[$positioni][$positionj+1]){
-            $positioni = $positioni;
-            $positionj = $positionj + 1;
-            $bool = true;
-        }elseif($letter == $array[$positioni-1][$positionj]){
-            $positioni = $positioni - 1;
-            $positionj = $positionj;
-            $bool = true;
-        }elseif($letter == $array[$positioni+1][$positionj]){
-            $positioni = $positioni + 1;
-            $positionj = $positionj;
-            $bool = true;
-        }else{
-            $bool = false;
         }
     }
+
+    // Si la chaîne de recherche n'est pas trouvée dans le tableau, retourner false
+    return false;
 }
 
-function searchWord(array $multiDimArray, string $word){
-    $bool = true;
-    $arrayWord = str_split($word);
-    $positioni = 0;
-    $positionj = 0;
-    $temp = 0;
-    for ($i = 0; $i < count($multiDimArray); $i++) {
-        for ($j = 0; $j < count($multiDimArray[$i]); $j++) {
-            if ($arrayWord[0] == $multiDimArray[$i][$j]  ){
-                $temp++;
-                $positioni = $i;
-                $positionj = $j;      
-            }
-        }
+
+
+// Fonction pour effectuer une recherche en profondeur (rechercheProfondeur) des caractères restants de la chaîne de recherche
+function rechercheProfondeur(array &$multiDimArray, int $row, int $col, string $searchString, int $index): bool {
+    // Cas de base : Si tous les caractères de la chaîne de recherche ont été trouvés, retourner true
+    if ($index === strlen($searchString)) {
+        return true;
     }
 
-    while ($temp<count($arrayWord)){
-        if ($bool == true){
-            nextLetter($positioni, $positionj, $bool ,$multiDimArray, $arrayWord[$temp]);
-            $temp++;
-        }else{
-            return false;
-        }
+    // Obtenir le nombre de lignes et de colonnes dans le tableau
+    $rows = count($multiDimArray);
+    $cols = count($multiDimArray[0]);
+
+    // Vérifier si la cellule actuelle est hors limites ou ne correspond pas au caractère actuel de la chaîne de recherche
+    if ($row < 0 || $row >= $rows || $col < 0 || $col >= $cols || $multiDimArray[$row][$col] !== $searchString[$index]) {
+        // Si l'une des conditions est remplie, retourner false
+        return false;
     }
 
-    return $bool;
-    
+    // Marquer la cellule actuelle comme visitée en changeant sa valeur en '#'
+    $temp = $multiDimArray[$row][$col];
+    $multiDimArray[$row][$col] = '#';
+
+    // Rechercher récursivement dans les quatre directions (haut, bas, gauche, droite)
+    $found = rechercheProfondeur($multiDimArray, $row - 1, $col, $searchString, $index + 1) ||
+             rechercheProfondeur($multiDimArray, $row + 1, $col, $searchString, $index + 1) ||
+             rechercheProfondeur($multiDimArray, $row, $col - 1, $searchString, $index + 1) ||
+             rechercheProfondeur($multiDimArray, $row, $col + 1, $searchString, $index + 1);
+
+    // Restaurer la valeur d'origine de la cellule actuelle
+    $multiDimArray[$row][$col] = $temp;
+
+    // Retourner si la chaîne de recherche a été trouvée ou non
+    return $found;
 }
 
-// Word can be constructed as letters from adjacent cells sequentially
-// where the 'adjacent' cells are the neighboring ones horizontally or vertically
-searchWord($board, 'abcd'); // true
-searchWord($board, 'abcl'); // true
-searchWord($board, 'admfbl'); // true
-
-// It is not allowed to use the same letter twice
-searchWord($board, 'abcc'); // false
-searchWord($board, 'abcdc'); // false
-searchWord($board, 'dklml'); // false
 ?>
