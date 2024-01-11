@@ -2,11 +2,13 @@
 
 class Car{
     //  ↙ Visibility on attributes
-    private float $tank = 40;
+    private float $tank;
 
     //  ↙ Visibility into functions
-    public function __construct()
-    {
+    public function __construct(float $tank = 45.4)
+    { 
+        $this->tank = $tank;
+
     }
 
     // Getters
