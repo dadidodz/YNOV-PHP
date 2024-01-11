@@ -1,7 +1,7 @@
 <?php
     class Car
     {
-        private int $tank;
+        private float $tank;
 
         public function __construct(float $tank = 0)
         {
