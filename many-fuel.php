@@ -1,23 +1,20 @@
 <?php
+    class Car
+    {
+        private int $tank;
 
-    class Car{
-        //  ↙ Visibility on attributes
-        private float $tank;
-
-        //  ↙ Visibility into functions
         public function __construct(float $tank = 0)
-        { 
+        {
             $this->tank = $tank;
-
         }
 
-        // Getters
+        //getters
         public function getTank(): float
         {
             return $this->tank;
         }
 
-        // Setters
+        //setters
         public function setTank(float $tank): self
         {
             $this->tank = $tank;
@@ -28,8 +25,5 @@
             (float)$consommation = $distance / 20;
             $this->setTank($this->getTank()-$consommation);
         }
-        
-
     }
-
 ?>
