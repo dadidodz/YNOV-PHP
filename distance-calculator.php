@@ -1,5 +1,5 @@
 <?php
-    class Geolocalisation
+    class Geolocation
     {
         public static function fromGeoPoints($lat1, $lng1, $lat2, $lng2, $miles = false) {
             $pi80 = M_PI / 180;
