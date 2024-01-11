@@ -29,7 +29,7 @@ function arrayContains(array $array, int|string|float $element): mixed{
             return $value;
         }
     }
-    return null;
+    return "Nothing";
 }
 
 function merge(array ...$arrays){
