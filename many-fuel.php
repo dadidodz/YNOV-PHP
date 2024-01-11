@@ -21,12 +21,6 @@
             return $this;
         }
 
-        public function add_fuel(float $to_add): self
-        {
-            $this->tank += $to_add;
-            return $this;
-        }
-
         public function ride(float $distance): self
         {
             (float)$res = $distance / 20;
