@@ -15,7 +15,7 @@
             $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
             $km = $r * $c;
         
-            return round(($km * 0.621371192), 1);
+            return round($km, 1);
         }
     
 
