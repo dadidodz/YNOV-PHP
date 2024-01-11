@@ -6,28 +6,28 @@ $board = [                  //board[i][j]
     ['m', 'f', 'b', 's']    //board[2][0]
 ];
 
-function nextLetter(&$positioni, &$positionj, $array, $letter){
-
+function nextLetter(&$positioni, &$positionj, &$bool, array $array, $letter){
+    // print('nextletter');
     if ($positioni == 0){
         if ($positionj == 0){
             if ($letter == $array[$positioni][$positionj+1]){
                 $positioni = $positioni;
                 $positionj = $positionj + 1;
-                return true;
+                $bool = true;
             }elseif($letter == $array[$positioni+1][$positionj]){
                 $positioni = $positioni + 1;
                 $positionj = $positionj;
-                return true;
+                $bool = true;
             }
         }elseif($positionj == count($array[$positioni])-1){
             if ($letter == $array[$positioni][$positionj-1]){
                 $positioni = $positioni;
                 $positionj = $positionj - 1;
-                return true;
+                $bool = true;
             }elseif($letter == $array[$positioni+1][$positionj]){
                 $positioni = $positioni + 1;
                 $positionj = $positionj;
-                return true;
+                $bool = true;
             }
         }
     }elseif ($positioni == count($array)-1){
@@ -35,67 +35,72 @@ function nextLetter(&$positioni, &$positionj, $array, $letter){
             if ($letter == $array[$positioni-1][$positionj]){
                 $positioni = $positioni - 1;
                 $positionj = $positionj;
-                return true;
+                $bool = true;
             }elseif($letter == $array[$positioni][$positionj+1]){
                 $positioni = $positioni;
                 $positionj = $positionj + 1;
-                return true;
+                $bool = true;
             }
         }elseif($positionj == count($array[$positioni])-1){
             if ($letter == $array[$positioni][$positionj-1]){
                 $positioni = $positioni;
                 $positionj = $positionj - 1;
-                return true;
+                $bool = true;
             }elseif($letter == $array[$positioni-1][$positionj]){
                 $positioni = $positioni - 1;
                 $positionj = $positionj;
-                return true;
+                $bool = true;
             }
         }
     }else{
         if ($letter == $array[$positioni][$positionj-1]){
             $positioni = $positioni;
             $positionj = $positionj - 1;
-            return true;
+            $bool = true;
         }elseif($letter == $array[$positioni][$positionj+1]){
             $positioni = $positioni;
             $positionj = $positionj + 1;
-            return true;
+            $bool = true;
         }elseif($letter == $array[$positioni-1][$positionj]){
             $positioni = $positioni - 1;
             $positionj = $positionj;
-            return true;
+            $bool = true;
         }elseif($letter == $array[$positioni+1][$positionj]){
             $positioni = $positioni + 1;
             $positionj = $positionj;
-            return true;
+            $bool = true;
         }else{
-            return false;
+            $bool = false;
         }
     }
 }
 
 function searchWord(array $multiDimArray, string $word){
+    // $letterFound = false;
     $bool = true;
     $arrayWord = str_split($word);
     $positioni = 0;
     $positionj = 0;
     $temp = 0;
+    // print('temp ' . $temp);
     for ($i = 0; $i < count($multiDimArray); $i++) {
         for ($j = 0; $j < count($multiDimArray[$i]); $j++) {
-            if ($arrayWord[0] == $multiDimArray[$i][$j] ){
+            if ($arrayWord[0] == $multiDimArray[$i][$j]  ){
+                // print('ici');
+                print('temp ' . $temp);
                 $temp++;
                 $positioni = $i;
-                $positionj = $j;        
-            }else{
-                return false;
+                $positionj = $j;
+                // $letterFound = true;       
             }
         }
     }
 
-    while ($temp<=count($arrayWord)){
+    while ($temp<count($arrayWord)){
+        // print('ici3');
         if ($bool == true){
-            $bool = nextLetter($positioni, $positionj, $multiDimArray, $arrayWord[$temp]);
+            print('temp ' . $temp);
+            nextLetter($positioni, $positionj, $bool ,$multiDimArray, $arrayWord[$temp]);
             $temp++;
         }else{
             return false;
@@ -103,7 +108,8 @@ function searchWord(array $multiDimArray, string $word){
     }
 
     return $bool;
+    
 }
 
-echo searchWord($board, 'abcd'); // true
+// print_r(searchWord($board, 'abcd'));  // true
 ?>
