@@ -1,23 +1,25 @@
 <?php
-    class Geolocation
-    {
-        public static function fromGeoPoints($lat1, $lng1, $lat2, $lng2) {
-            $pi80 = M_PI / 180;
-            $lat1 *= $pi80;
-            $lng1 *= $pi80;
-            $lat2 *= $pi80;
-            $lng2 *= $pi80;
 
-            $r = 6372.797; // rayon moyen de la Terre en km
-            $dlat = $lat2 - $lat1;
-            $dlng = $lng2 - $lng1;
-            $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
-            $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
-            $km = $r * $c;
-        
-            return round($km, 1);
-        }
-    
+class Geolocation {
+    const EARTH_RADIUS_KM = 6371;
 
+    public static function fromGeoPoints($lat1, $lon1, $lat2, $lon2) {
+        $lat1 = deg2rad($lat1);
+        $lon1 = deg2rad($lon1);
+        $lat2 = deg2rad($lat2);
+        $lon2 = deg2rad($lon2);
+
+        $deltaLat = $lat2 - $lat1;
+        $deltaLon = $lon2 - $lon1;
+
+        $a = sin($deltaLat / 2) * sin($deltaLat / 2) + cos($lat1) * cos($lat2) * sin($deltaLon / 2) * sin($deltaLon / 2);
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+
+        $distance = self::EARTH_RADIUS_KM * $c;
+
+        $distance = round($distance, 1);
+
+        return $distance;
     }
+}
 ?>
