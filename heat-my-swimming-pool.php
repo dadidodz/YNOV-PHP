@@ -32,15 +32,16 @@ class PoolTemps implements PoolTempsInterface {
         return $this;
     }
 
-    function activateHeater(){
+    function activateHeater(): self{
         $sumAvgTemp = 0;
         for($i = 0; $i < count($this->getLastDaysTemps()); $i++ ){
             $sumAvgTemp += $this->getLastDaysTemps()[$i];
         }
         $avgTemp = $sumAvgTemp / 7;
-        if ($avgTemp > 20 && $this->getActualTemp() >= 25 && $this->activateHeater() == false){
+        if ($avgTemp > 20 && $this->getActualTemp() >= 25){
             $this->setHeater(true);
         }
+        return $this;
     }
 }
 
