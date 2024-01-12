@@ -15,7 +15,7 @@ class Square extends AbstractGeometry {
     }
 
     public function area(): int|float{
-        $area = $this->width ^ 2;
+        $area = $this->width * $this->width;
         return $area;
     }
 
