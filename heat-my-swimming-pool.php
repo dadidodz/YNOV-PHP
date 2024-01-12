@@ -10,7 +10,7 @@ interface PoolTempsInterface {
 
 class PoolTemps implements PoolTempsInterface {
 
-    private bool $isActive = false;
+    public bool $isActive = false;
     private int $currentTemp;
     private array $avgTempLast7Days;
 
