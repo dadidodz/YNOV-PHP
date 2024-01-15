@@ -1,35 +1,22 @@
 <?php
 
-
-class BinaryNode
+function invertedTree($root)
 {
-    public ?int $value = null; // Node value
-    public ?BinaryNode $left = null; // Left child
-    public ?BinaryNode $right = null; // Right child
-
-    public function __construct(int $value)
-    {
-        $this->value = $value;
+    if ($root == null) {
+        return null;
     }
 
-    
-    public function invertedTree(?BinaryNode $root): ?BinaryNode
-    {
-        if ($root == null) {
-            return null;
-        }
+    // Swap left and right subtrees
+    $temp = $root->left;
+    $root->left = $root->right;
+    $root->right = $temp;
 
-        // Swap left and right subtrees
-        $temp = $root->left;
-        $root->left = $root->right;
-        $root->right = $temp;
+    // Invert left and right subtrees recursively
+    invertedTree($root->left);
+    invertedTree($root->right);
 
-        // Invert left and right subtrees recursively
-        $this->invertedTree($root->left);
-        $this->invertedTree($root->right);
-
-        return $root;
-    }
+    return $root;
 }
+
 
 ?>
