@@ -1,6 +1,6 @@
 <?php
 
-function invertedTree($root)
+function invertTree($root)
 {
     if ($root == null) {
         return null;
@@ -12,8 +12,8 @@ function invertedTree($root)
     $root->right = $temp;
 
     // Invert left and right subtrees recursively
-    invertedTree($root->left);
-    invertedTree($root->right);
+    invertTree($root->left);
+    invertTree($root->right);
 
     return $root;
 }
